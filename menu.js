@@ -14,7 +14,7 @@ var boogieAllume = true;
 
 
 
-var tel = true;
+var tel = false;
 
 
 
@@ -79,7 +79,7 @@ class menu extends Phaser.Scene{
     {
         // --------------------------------- RECONAISSANCE DU MEDIA --------------------------------------- //
 
-        /*if(navigator.userAgent.match(/iPhone/i)
+        if(navigator.userAgent.match(/iPhone/i)
         || navigator.userAgent.match(/webOS/i)
         || navigator.userAgent.match(/Android/i)
         || navigator.userAgent.match(/iPad/i)
@@ -90,7 +90,7 @@ class menu extends Phaser.Scene{
         }
         else{
             tel = false;
-        } */
+        } 
 
         fond = this.add.sprite(448,224, 'menu').setScrollFactor(0);
 
