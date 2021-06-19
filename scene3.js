@@ -157,7 +157,13 @@ class scene3 extends Phaser.Scene{
     {
         this.load.spritesheet('dude', 'assets/perso_capacites/perso_animation_sprite.png', { frameWidth: 64, frameHeight: 96 });
 
+        this.load.audio('fond_audio', 'assets/music/audio_fond.mp3');
+        this.load.audio('fond_audio_60', 'assets/music/audio_fond_60.mp3');
+        this.load.audio('fond_audio_30', 'assets/music/audio_fond_30.mp3');
+
         this.load.audio('fond_oeil', 'assets/music/audio_oeil.mp3');
+        this.load.audio('fond_oeil_60', 'assets/music/audio_oeil_60.mp3');
+        this.load.audio('fond_oeil_30', 'assets/music/audio_oeil_30.mp3');
 
         this.load.image('tiles','assets/tileset.png');
         this.load.tilemapTiledJSON('map3','assets/s3.json');
@@ -719,10 +725,22 @@ class scene3 extends Phaser.Scene{
         // --------------- ICONE TIME --------------------//
 
         if (!tel){
-            iconTime = this.add.sprite(448,50, 'iconTime').setScale(0.9).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                iconTime = this.add.sprite(448,50, 'iconTime').setScale(0.9).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                iconTime = this.add.sprite(448,398, 'iconTime').setScale(0.9).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
         }
         else if (tel){
-            iconTime = this.add.sprite(846,278, 'iconTime').setScale(0.9).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                iconTime = this.add.sprite(846,278, 'iconTime').setScale(0.9).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                iconTime = this.add.sprite(50,278, 'iconTime').setScale(0.9).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
         }
 
         iconTime.on('pointerover', function (event) {
@@ -843,10 +861,22 @@ class scene3 extends Phaser.Scene{
         // --------------- ICONE PLATFORM --------------------//
 
         if (!tel){
-            iconPlatform = this.add.sprite(328,50, 'iconPlatform').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                iconPlatform = this.add.sprite(328,50, 'iconPlatform').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                iconPlatform = this.add.sprite(328,398, 'iconPlatform').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
         }
         else if (tel){
-            iconPlatform = this.add.sprite(846,398, 'iconPlatform').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                iconPlatform = this.add.sprite(846,398, 'iconPlatform').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                iconPlatform = this.add.sprite(50,398, 'iconPlatform').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
         }
 
         iconPlatform.on('pointerover', function (event) {
@@ -897,12 +927,22 @@ class scene3 extends Phaser.Scene{
         // --------------- ICONE BALL --------------------//
 
         if (!tel){
-            iconBall = this.add.sprite(568,50, 'iconBall').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                iconBall = this.add.sprite(568,50, 'iconBall').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                iconBall = this.add.sprite(568,398, 'iconBall').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }  
         }
         if (tel){
-            iconBall = this.add.sprite(846,158, 'iconBall').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                iconBall = this.add.sprite(846,158, 'iconBall').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                iconBall = this.add.sprite(50,158, 'iconBall').setScale(0.8).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
         }
-
 
         iconBall.on('pointerover', function (event) {
 
@@ -968,10 +1008,16 @@ class scene3 extends Phaser.Scene{
             
         }, this);
 
-        // -------------------- Fleche directionnelless --------------------- //
+         // -------------------- Fleche directionnelless --------------------- //
 
-        if (tel){
-            flecheDown = this.add.sprite(170,378, 'fleche_down').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+         if (tel){
+            if (!intervertir){
+                flecheDown = this.add.sprite(170,378, 'fleche_down').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                flecheDown = this.add.sprite(726,378, 'fleche_down').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
 
             flecheDown.on('pointerdown', function(){
                 moveDown = true;
@@ -980,8 +1026,13 @@ class scene3 extends Phaser.Scene{
                 moveDown = false;
             });
 
-
-            flecheUp = this.add.sprite(170,228, 'fleche_up').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                flecheUp = this.add.sprite(170,228, 'fleche_up').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                flecheUp = this.add.sprite(726,228, 'fleche_up').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
 
             flecheUp.on('pointerdown', function(){
                 moveUp = true;
@@ -990,8 +1041,13 @@ class scene3 extends Phaser.Scene{
                 moveUp = false;
             });
 
-
-            flecheRight = this.add.sprite(240,308, 'fleche_right').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                flecheRight = this.add.sprite(240,308, 'fleche_right').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                flecheRight = this.add.sprite(796,308, 'fleche_right').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
 
             flecheRight.on('pointerdown', function(){
                 moveRight = true;
@@ -1000,8 +1056,13 @@ class scene3 extends Phaser.Scene{
                 moveRight = false;
             });
 
-
-            flecheLeft = this.add.sprite(100,308, 'fleche_left').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            if (!intervertir){
+                flecheLeft = this.add.sprite(100,308, 'fleche_left').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            else if (intervertir){
+                flecheLeft = this.add.sprite(646,308, 'fleche_left').setScale(1.7).setScrollFactor(0).setInteractive({ cursor: 'pointer' });
+            }
+            
 
             flecheLeft.on('pointerdown', function(){
                 moveLeft = true;
@@ -1169,10 +1230,56 @@ class scene3 extends Phaser.Scene{
             fin = true;
         }
 
+        // ----------------------------------------------------- Musique ----------------------------------------------------------- //
+        if (!musicLance && !musicOeilLance){
+            if (volume == '100'){
+                 fond_audio = this.sound.add('fond_audio');
+             }
+             else if (volume == '60'){
+                 fond_audio = this.sound.add('fond_audio_60');
+             }
+             else if (volume == '30'){
+                 fond_audio = this.sound.add('fond_audio_30');
+             }
+             else {
+             } 
+         }
+         
+         
+         var musicConfig = {
+             mute : false,
+             volume : 0.5,
+             rate : 1,
+             loop : true,
+         }
+ 
+         if (musicLance && volume != '0'){
+             
+         }
+         if (!musicLance && volume != '0' && !musicOeilLance){
+             fond_audio.play(musicConfig);
+             musicLance = true;
+        }
+         
+ 
+
         // ----------------------------------------------------- Musique OEIL ----------------------------------------------------------- //
 
 
-        fond_oeil = this.sound.add('fond_oeil')
+        if (!musicOeilLance){
+            if (volume == '100'){
+                 fond_oeil = this.sound.add('fond_oeil');
+             }
+             else if (volume == '60'){
+                 fond_oeil = this.sound.add('fond_oeil_60');
+             }
+             else if (volume == '30'){
+                 fond_oeil = this.sound.add('fond_oeil_30');
+             }
+             else {
+             } 
+         }
+
         var musicOeilConfig = {
             mute : false,
             volume : 0.0005,

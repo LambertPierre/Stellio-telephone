@@ -16,6 +16,9 @@ var boogieAllume = true;
 
 var tel = false;
 
+var volume = '60';
+var intervertir = false;
+
 
 
 class menu extends Phaser.Scene{
@@ -72,16 +75,18 @@ class menu extends Phaser.Scene{
         this.load.spritesheet('iconPlatform', 'assets/UI/iconPlatform_sprite.png', { frameWidth: 114, frameHeight: 114 });
         this.load.spritesheet('iconBall', 'assets/UI/iconBall_sprite.png', { frameWidth: 114, frameHeight: 114 });
 
+        this.load.spritesheet('retour', 'assets/UI/retour.png', { frameWidth: 154, frameHeight: 83 });
+
         
     }
 
     create ()
     {
         // --------------------------------- RECONAISSANCE DU MEDIA --------------------------------------- //
-
+        
         if(navigator.userAgent.match(/iPhone/i)
         || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/Android/i)
+        //|| navigator.userAgent.match(/Android/i)
         || navigator.userAgent.match(/iPad/i)
         || navigator.userAgent.match(/iPod/i)
         || navigator.userAgent.match(/BlackBerry/i)
@@ -413,6 +418,18 @@ class menu extends Phaser.Scene{
                 frameRate: 100
             })
 
+            // ----------------- RETOUR -------------------- //
+            this.anims.create({
+                key: 'retourNo',
+                frames: [ { key: 'retour', frame: 0 } ],
+                frameRate: 20
+            })
+            this.anims.create({
+                key: 'retourYes',
+                frames: [ { key: 'retour', frame: 1 } ],
+                frameRate: 20
+            })
+
 
 
 
@@ -434,6 +451,12 @@ class menu extends Phaser.Scene{
             parametre.anims.play('paraNo',true);
     
         });
+
+        parametre.on('pointerdown', function(){
+
+            this.scene.start("parametres");
+
+        }, this);
 
         // ------------------------- Bouton Quitter --------------------------------- //
 

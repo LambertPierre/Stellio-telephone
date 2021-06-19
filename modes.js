@@ -46,17 +46,6 @@ class modes extends Phaser.Scene{
             })
 
             this.anims.create({
-                key: 'retourNo',
-                frames: [ { key: 'retour', frame: 0 } ],
-                frameRate: 20
-            })
-            this.anims.create({
-                key: 'retourYes',
-                frames: [ { key: 'retour', frame: 1 } ],
-                frameRate: 20
-            })
-
-            this.anims.create({
                 key: 'speedrunNo',
                 frames: [ { key: 'speedrun', frame: 0 } ],
                 frameRate: 20
