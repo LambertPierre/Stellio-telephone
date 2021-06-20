@@ -380,7 +380,7 @@ class scene2 extends Phaser.Scene{
                 // ---------------- Reset des capacités ------------------ //
 
                 timeActivated = false;
-                timeCD = true;
+                setTimeout(function(){timeCD = true;}, 2000);
 
                 if (!platformCD){
                     platform.destroy();
@@ -1277,7 +1277,7 @@ class scene2 extends Phaser.Scene{
             // ---------------- Reset des capacités ------------------ //
 
             timeActivated = false;
-            timeCD = true;
+            setTimeout(function(){timeCD = true;}, 2000);
 
             if (platformActivated){
                 platformActivated = false;
