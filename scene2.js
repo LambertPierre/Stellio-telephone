@@ -179,13 +179,19 @@ class scene2 extends Phaser.Scene{
 
         this.load.spritesheet('livreColl', 'assets/deco/livreColl.png', { frameWidth: 64, frameHeight: 64 });
 
-        // ----------- déco test ------------ //
+        // ----------- déco ------------ //
 
         this.load.spritesheet('fondespace', 'assets/deco/fondespace.png', { frameWidth: 1920, frameHeight: 960 });
 
         this.load.spritesheet('fond', 'assets/deco/fond.png', { frameWidth: 1920, frameHeight: 960 });
 
         this.load.spritesheet('biblio1P2', 'assets/deco/biblio1_plan2.png', { frameWidth: 960, frameHeight: 960 });
+        this.load.spritesheet('biblio2P2', 'assets/deco/biblio2_plan2.png', { frameWidth: 960, frameHeight: 960 });
+
+        this.load.spritesheet('biblioP1', 'assets/deco/biblio_plan1.png', { frameWidth: 448, frameHeight: 448 });
+        this.load.spritesheet('rouleauP1', 'assets/deco/rouleau_plan1.png', { frameWidth: 448, frameHeight: 448 });
+        this.load.spritesheet('lustreP1', 'assets/deco/lustre_plan1.png', { frameWidth: 448, frameHeight: 448 });
+
 
         // -------- anim' capacité --------- //
         this.load.spritesheet('time_sprite', 'assets/perso_capacites/time_sprite.png', { frameWidth: 1792, frameHeight: 896 });
@@ -220,13 +226,61 @@ class scene2 extends Phaser.Scene{
         const tileset2 = map2.addTilesetImage('tileset', 'tiles');
         
 
-        // -------------------------------------------------------- DECORATION TEST ------------------------------------------------- //
+        // -------------------------------------------------------- DECORATION ALEATOIRE ------------------------------------------------- //
 
         fondespace = this.add.sprite(960, 448, 'fondespace').setScrollFactor(0);
 
         fond = this.add.sprite(960, 448, 'fond').setScrollFactor(0.2);
 
-        biblio1P2 = this.add.sprite(960, 448, 'biblio1P2').setScrollFactor(0.3);
+        aleaPlan2 = Phaser.Math.Between(1, 2);
+        if (aleaPlan2 == 1){
+            this.add.image(960, 448, 'biblio1P2').setScrollFactor(0.3);
+
+            this.add.image(2120, 448, 'biblio2P2').setScrollFactor(0.3);
+        }
+        else {
+            this.add.image(2120, 448, 'biblio1P2').setScrollFactor(0.3);
+
+            this.add.image(960, 448, 'biblio2P2').setScrollFactor(0.3);
+        }
+
+        alea1Plan1 = Phaser.Math.Between(1, 3);
+        alea2Plan1 = Phaser.Math.Between(1, 2);
+        if (alea1Plan1 == 1){
+            this.add.image(448, 486, 'biblioP1').setScrollFactor(0.5);
+
+            if (alea2Plan1 == 1){
+                this.add.image(1344,486, 'rouleauP1').setScrollFactor(0.5);
+                this.add.image(2240,224, 'lustreP1').setScrollFactor(0.5);
+            }
+            else if (alea2Plan1 == 2){
+                this.add.image(2240,486, 'rouleauP1').setScrollFactor(0.5);
+                this.add.image(1344,224, 'lustreP1').setScrollFactor(0.5);
+            }
+        }
+        else if (alea1Plan1 == 2){
+            this.add.image(1344, 486, 'biblioP1').setScrollFactor(0.5);
+
+            if (alea2Plan1 == 1){
+                this.add.image(448,486, 'rouleauP1').setScrollFactor(0.5);
+                this.add.image(2240,224, 'lustreP1').setScrollFactor(0.5);
+            }
+            else if (alea2Plan1 == 2){
+                this.add.image(2240,486, 'rouleauP1').setScrollFactor(0.5);
+                this.add.image(448,224, 'lustreP1').setScrollFactor(0.5);
+            }
+        }
+        else if (alea1Plan1 == 3){
+            this.add.image(2240, 486, 'biblioP1').setScrollFactor(0.5);
+            if (alea2Plan1 == 1){
+                this.add.image(448,486, 'rouleauP1').setScrollFactor(0.5);
+                this.add.image(1344,224, 'lustreP1').setScrollFactor(0.5);
+            }
+            else if (alea2Plan1 == 2){
+                this.add.image(1344,486, 'rouleauP1').setScrollFactor(0.5);
+                this.add.image(448,224, 'lustreP1').setScrollFactor(0.5);
+            }
+        }
 
         const plan1 = map2.createLayer('plan1', tileset2, 0, 0);
         const obstacle = map2.createLayer('plan0', tileset2, 0, 0);
